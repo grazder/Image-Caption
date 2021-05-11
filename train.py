@@ -233,6 +233,8 @@ if __name__ == '__main__':
                         help='folder with data files saved by create_input_files.py.')
     parser.add_argument('--data_name', default="coco_5_cap_per_img_5_min_word_freq",
                         help='base name shared by data files.')
+    parser.add_argument('--checkpoint_path', default="/content/drive/MyDrive/okphoto/dataset/checkpoints_transformer",
+                        help='folder with checkpoints')                        
     # Model parameters
     parser.add_argument('--emb_dim', type=int, default=300, help='dimension of word embeddings.')
     parser.add_argument('--attention_dim', type=int, default=512, help='dimension of attention linear layers.')
@@ -409,4 +411,4 @@ if __name__ == '__main__':
 
         # Save checkpoint
         save_checkpoint(args.data_name, epoch, epochs_since_improvement, encoder, decoder, encoder_optimizer,
-                        decoder_optimizer, metrics, is_best, final_args)
+                        decoder_optimizer, metrics, is_best, final_args, args.checkpoint_path)
